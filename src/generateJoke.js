@@ -1,5 +1,14 @@
+import axios from "axios"
+
 function generateJoke() {
-    return "Почему программеры редко посещают пляжи? Потому что они боятся песочных багов!"
+    const config = {
+        headers: {
+            Accept: 'application/json'
+        }
+    }
+    axios.get('https://icanhazdadjoke.com', config).then(res => {
+        document.getElementById('joke').innerHTML = res.data.joke
+    })
 }
 
 export default generateJoke
